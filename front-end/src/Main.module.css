@@ -1,0 +1,17 @@
+
+.main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.side {
+    width: 25%;
+    margin: 1em;
+    border-right:  2px solid #f6f5f1;
+}
+
+.content {
+    width: 75%;
+    margin: 1em;
+}

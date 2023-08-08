@@ -1,0 +1,142 @@
+{
+  "openapi": "3.0.3",
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8000"
+    }
+  ],
+  "info": {
+    "title": "Dishes",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/categories": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "list of category",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryItem"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad respond"
+          }
+        }
+      }
+    },
+    "/dishes": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "category",
+            "description": "pass an optional id of category for filtering",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "list of dishes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DishItem"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad respond"
+          }
+        }
+      }
+    },
+    "/dish/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "pass an id of dish for getting an item",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "dish item",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DishItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad respond"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CategoryItem": {
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "DishItem": {
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "category": {
+            "$ref": "#/components/schemas/CategoryItem"
+          }
+        }
+      }
+    }
+  }
+}

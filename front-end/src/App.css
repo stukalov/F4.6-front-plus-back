@@ -1,0 +1,7 @@
+.App {
+  margin: auto;
+  max-width: 1200px;
+  border-left: 2px solid #f6f5f1;
+  border-right: 2px solid #f6f5f1;
+  min-height: 100vh;
+}
